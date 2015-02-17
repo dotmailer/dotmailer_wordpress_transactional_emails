@@ -1,14 +1,13 @@
 <?php
 
 /*
-Plugin Name: Dotmailer SMTP
+Plugin Name: dotmailer SMTP
 Version: 1.0.0
-Plugin URI: http://dotmailer.com/
-Description: Custom SMTP mail service.
+Plugin URI: http://www.dotmailer.com/
+Description: dotmailer transactional emails
 Author: Calin Diacon
-Author URI: http://dotmailer.com/
+Author URI: http://www.dotmailer.com/
 */
-
 
 /**
  * Add menu and submenu.
@@ -17,16 +16,15 @@ Author URI: http://dotmailer.com/
 
 if ( ! function_exists( 'dm_smtp_admin_default_setup' ) ) {
 	function dm_smtp_admin_default_setup() {
-		add_options_page(__('Dotmailer SMTP', 'dotmailer_smtp'), __('Dotmailer SMTP', 'dotmailer_smtp'), 'manage_options', __FILE__, 'dm_smtp_settings');
+		add_options_page(__('dotmailer SMTP', 'dotmailer_smtp'), __('dotmailer SMTP', 'dotmailer_smtp'), 'manage_options', __FILE__, 'dm_smtp_settings');
 	}
 }
-
-
 
 /**
  * Plugin functions for init
  * @return void
  */
+ 
 if ( ! function_exists ( 'dm_smtp_admin_init' ) ) {
 	function dm_smtp_admin_init() {
 
@@ -36,10 +34,12 @@ if ( ! function_exists ( 'dm_smtp_admin_init' ) ) {
 		}
 	}
 }
+
 /**
  * Register settings function
  * @return void
  */
+ 
 if ( ! function_exists( 'dm_smtp_register_settings' ) ) {
 	function dm_smtp_register_settings() {
 		$dmsmtp_options_default = array(
@@ -62,14 +62,13 @@ if ( ! function_exists( 'dm_smtp_register_settings' ) ) {
 	}
 }
 
-
-
 /**
  * Add action links on plugin page in to Plugin Name block
  * @param $links array() action links
- * @param $file  string  relative path to pugin "easy-wp-smtp/easy-wp-smtp.php"
+ * @param $file  string  relative path to plugin "easy-wp-smtp/easy-wp-smtp.php"
  * @return $links array() action links
  */
+ 
 if ( ! function_exists ( 'dm_smtp_plugin_action_links' ) ) {
 	function dm_smtp_plugin_action_links( $links, $file ) {
 		/* Static so we don't call plugin_basename on every plugin row. */
@@ -85,14 +84,13 @@ if ( ! function_exists ( 'dm_smtp_plugin_action_links' ) ) {
 	}
 }
 
-
-
 /**
  * Add action links on plugin page in to Plugin Description block
  * @param $links array() action links
  * @param $file  string  relative path to pugin
  * @return $links array() action links
  */
+ 
 if ( ! function_exists ( 'dm_smtp_register_plugin_links' ) ) {
 	function dm_smtp_register_plugin_links( $links, $file ) {
 		$base = plugin_basename( __FILE__ );
@@ -103,12 +101,11 @@ if ( ! function_exists ( 'dm_smtp_register_plugin_links' ) ) {
 	}
 }
 
-
-
 /**
  * Function to add smtp options in the phpmailer_init
  * @return void
  */
+ 
 if ( ! function_exists ( 'dm_smtp_init_smtp' ) ) {
 	function dm_smtp_init_smtp( $phpmailer ) {
 		$dm_smtp_options = get_option( 'dm_smtp_options' );
@@ -157,12 +154,11 @@ if ( ! function_exists ( 'dm_smtp_init_smtp' ) ) {
 	}
 }
 
-
-
 /**
  * View function the settings to send messages.
  * @return void
  */
+ 
 if ( ! function_exists( 'dm_smtp_settings' ) ) {
 	function dm_smtp_settings() {
 
@@ -216,13 +212,13 @@ if ( ! function_exists( 'dm_smtp_settings' ) ) {
 				}
 			}
 			$dm_smtp_subject = 'Testing Emails';
-			$dm_smtp_message = 'Wellcome to Dotmailer SMTP for Wordpress.';
+			$dm_smtp_message = 'Welcome to dotmailer transactional emails for Wordpress.';
 			if( ! empty( $dm_smtp_to ) )
 				$result = dm_smtp_test_mail( $dm_smtp_to, $dm_smtp_subject, $dm_smtp_message );
 		} ?>
 		<div class="swpsmtp-mail wrap" id="swpsmtp-mail">
 			<div id="icon-options-general" class="icon32 icon32-bws"></div>
-			<h2><?php _e( "Dotmailer SMTP Settings", 'dotmailer_smtp' ); ?></h2>
+			<h2><?php _e( "dotmailer SMTP Settings", 'dotmailer_smtp' ); ?></h2>
 			<div class="updated fade" <?php if( empty( $message ) ) echo "style=\"display:none\""; ?>>
 				<p><strong><?php echo $message; ?></strong></p>
 			</div>
@@ -324,6 +320,7 @@ if ( ! function_exists( 'dm_smtp_settings' ) ) {
  * Function to test mail sending
  * @return text or errors
  */
+ 
 if ( ! function_exists( 'dm_smtp_test_mail' ) ) {
 	function dm_smtp_test_mail( $to_email, $subject, $message ) {
 		$errors = '';
@@ -375,11 +372,11 @@ if ( ! function_exists( 'dm_smtp_test_mail' ) ) {
 	}
 }
 
-
 /**
  * Function to add plugin scripts
  * @return void
  */
+ 
 if ( ! function_exists ( 'dm_smtp_admin_head' ) ) {
 	function dm_smtp_admin_head() {
 		wp_enqueue_style( 'dm_smtp_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
@@ -387,15 +384,11 @@ if ( ! function_exists ( 'dm_smtp_admin_head' ) ) {
 	}
 }
 
-
-
-
-
-
 /**
  * Performed at uninstal.
  * @return void
  */
+ 
 if ( ! function_exists( 'dm_smtp_send_uninstall' ) ) {
 	function dm_smtp_send_uninstall() {
 		/* delete plugin options */
@@ -403,7 +396,6 @@ if ( ! function_exists( 'dm_smtp_send_uninstall' ) ) {
 		delete_option( 'dm_smtp_options' );
 	}
 }
-
 
 /**
  * Add all hooks
