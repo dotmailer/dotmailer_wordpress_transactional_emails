@@ -65,7 +65,7 @@ if ( ! function_exists( 'dm_smtp_register_settings' ) ) {
 /**
  * Add action links on plugin page in to Plugin Name block
  * @param $links array() action links
- * @param $file  string  relative path to plugin "easy-wp-smtp/easy-wp-smtp.php"
+ * @param $file  string  relative path to plugin
  * @return $links array() action links
  */
  
@@ -216,7 +216,7 @@ if ( ! function_exists( 'dm_smtp_settings' ) ) {
 			if( ! empty( $dm_smtp_to ) )
 				$result = dm_smtp_test_mail( $dm_smtp_to, $dm_smtp_subject, $dm_smtp_message );
 		} ?>
-		<div class="swpsmtp-mail wrap" id="swpsmtp-mail">
+		<div class="wrap" id="dmpsmtp-mail">
 			<div id="icon-options-general" class="icon32 icon32-bws"></div>
 			<h2><?php _e( "dotmailer SMTP Settings", 'dotmailer_smtp' ); ?></h2>
 			<div class="updated fade" <?php if( empty( $message ) ) echo "style=\"display:none\""; ?>>
@@ -225,7 +225,7 @@ if ( ! function_exists( 'dm_smtp_settings' ) ) {
 			<div class="error" <?php if ( empty( $error ) ) echo "style=\"display:none\""; ?>>
 				<p><strong><?php echo $error; ?></strong></p>
 			</div>
-			<div id="swpsmtp-settings-notice" class="updated fade" style="display:none">
+			<div id="dm_smtp-settings-notice" class="updated fade" style="display:none">
 				<p><strong><?php _e( "Notice:", 'dotmailer_smtp' ); ?></strong> <?php _e( "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button.", 'dotmailer_smtp' ); ?></p>
 			</div>
 			<h3><?php _e( 'General', 'dotmailer_smtp' ); ?></h3>
@@ -272,7 +272,6 @@ if ( ! function_exists( 'dm_smtp_settings' ) ) {
 					<tr valign="top">
 						<th scope="row"><?php _e( "From Email", 'dotmailer_smtp' ); ?></th>
 						<td>
-							<?php //var_dump($dm_smtp_options);die;?>
 							<input type="text" name="dm_smtp_from_email" value="<?php echo stripslashes( $dm_smtp_options['from_email_field'] ); ?>"/><br />
 							<span class="dm_smtp_info"><?php _e( "Friendly from email.", 'dotmailer_smtp' ); ?></span>
 						</td>
@@ -317,10 +316,8 @@ if ( ! function_exists( 'dm_smtp_settings' ) ) {
 }
 
 /**
- * Function to test mail sending
- * @return text or errors
+ * Test mail sending
  */
- 
 if ( ! function_exists( 'dm_smtp_test_mail' ) ) {
 	function dm_smtp_test_mail( $to_email, $subject, $message ) {
 		$errors = '';
@@ -400,7 +397,6 @@ if ( ! function_exists( 'dm_smtp_send_uninstall' ) ) {
 /**
  * Add all hooks
  */
-
 add_filter( 'plugin_action_links', 'dm_smtp_plugin_action_links', 10, 2 );
 add_filter( 'plugin_row_meta', 'dm_smtp_register_plugin_links', 10, 2 );
 
