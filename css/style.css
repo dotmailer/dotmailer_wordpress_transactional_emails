@@ -1,14 +1,14 @@
 /**
  * Settings page
  */
-.dm_smtp_info {
+.ddg_smtp_info {
     font-size: 10px;
     color: #888;
 }
-#dm_smtp_settings_form input[type='text'],
+#ddg_smtp_settings_form input[type='text'],
 input[type='password']{
     width: 250px;
 }
-textarea#dm_smtp_message{
+textarea#ddg_smtp_message{
     width: 250px;
 }
