@@ -1,10 +1,10 @@
-=== Dotmailer SMTP ===
+=== dotmailer SMTP ===
 Contributors: cdiacon
-Donate link: http://dotmailer.com/
-Tags: mail, wordpress smtp, phpmailer, smtp, wp_mail, email, gmail, outgoing mail, privacy, security, dotmailer, ssl, tls, wp-phpmailer, mail smtp, wp smtp
+Donate link: http://www.dotmailer.com/
+Tags: mail, wordpress smtp, smtp, wp_mail, email, outgoing mail, dotmailer, ssl, tls, mail smtp, wp smtp
 Requires at least: 2.7
 Tested up to: 4.0
-Stable tag: 0.9.5
+Stable tag: 1.0.0
 
 Reconfigures the wp_mail() function to use SMTP instead of mail() and creates an options page to manage the settings.
 
